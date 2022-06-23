@@ -1,7 +1,8 @@
 import chalk from 'chalk'
 import yargs from 'yargs'
 import {hideBin} from 'yargs/helpers'
-import getNotes from './notes.js'
+import { getNotes, addNote } from './notes.js'
+
 
 const argv = yargs(process.argv.slice(2)) 
 	.command({
@@ -20,7 +21,7 @@ const argv = yargs(process.argv.slice(2))
 			}
 		},
 		handler: (argv) => {
-    	console.log(`Title: ${argv.title},\nBody: ${argv.body}`)
+			addNote(argv.title, argv.body)
 		}
 	})
 	.command('remove', 'Delete a Note', () => {}, (argv) => {
